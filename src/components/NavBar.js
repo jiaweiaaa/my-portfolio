@@ -33,7 +33,7 @@ export const NavBar = () => {
     <Navbar expand="lg" className={scrolled ? "scrolled" : ""}>
       <Container>
         <Navbar.Brand href="#home">
-          <img src="" alt="Logo" className="logo" />
+          <img src={logo} alt="Logo" className="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav">
           <span className="navbar-toggler-icon"></span>
@@ -71,17 +71,15 @@ export const NavBar = () => {
           <span className="navbar-text">
             <div className="social-icon">
               <a href="">
-                <img src="" alt="" />
+                <img src={NavIcon1} alt="" />
               </a>
               <a href="">
-                <img src="" alt="" />
+                <img src={NavIcon2} alt="" />
               </a>
               <a href="">
-                <img src="" alt="" />
+                <img src={NavIcon3} alt="" />
               </a>
-              <a href="">
-                <img src="" alt="" />
-              </a>
+          
             </div>
           </span>
           <button className="connect" />

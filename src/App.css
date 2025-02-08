@@ -15,6 +15,7 @@
   font-weight: 400;
 }
 
+/************ Default Css ************/
 *{
   margin: 0;
   padding: 0;
@@ -83,13 +84,27 @@ p.danger {
 
 /************ Navbar Css ************/
 nav.navbar {
+  display: block;
   padding: 18px 0;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 9999;
   transition:  0.32s ease-in-out;
+  text-align: center;
 }
+nav.navbar .container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  text-align: center;
+}
+nav.navbar .container #basic-navbar-nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 nav.navbar.scrolled {
   padding: 0px 0;
   background-color: #121212;
