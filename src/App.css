@@ -103,6 +103,7 @@ nav.navbar .container #basic-navbar-nav{
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-grow: 1;
 }
 
 nav.navbar.scrolled {
@@ -112,6 +113,7 @@ nav.navbar.scrolled {
 nav.navbar a.navbar-brand {
     width: 9%;
 }
+
 nav.navbar .navbar-nav .nav-link.navbar-link {
   font-weight: 400;
   color: #fff !important;
