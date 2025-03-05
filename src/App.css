@@ -93,18 +93,8 @@ nav.navbar {
   transition:  0.32s ease-in-out;
   text-align: center;
 }
-nav.navbar .container {
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  text-align: center;
-}
-nav.navbar .container #basic-navbar-nav{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-grow: 1;
-}
+
+
 
 nav.navbar.scrolled {
   padding: 0px 0;
