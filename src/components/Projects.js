@@ -40,7 +40,7 @@ export const Projects = () => {
   ];
 
   return (
-    <section className="projects" id="projects">
+    <section className="project" id="projects">
       <Container>
         <Row>
           <Col>

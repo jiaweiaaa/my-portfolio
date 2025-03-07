@@ -7,6 +7,7 @@ export const Contact = () => {
         firstName:'',
         lastName:'',
         email:'',
+        phone:'',
         message:''
     }
 
@@ -22,7 +23,24 @@ export const Contact = () => {
 
     }
 
-    const handleSubmit =  () => {
+    const handleSubmit =  async (e) => {
+        e.preventDefault();
+        setButtonText('Sending...');
+        let response =await fetch("http://localhost:5000/contact", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/json; utf-8',
+            },
+            body: JSON.stringify(formDetails)
+        });
+        setButtonText('Send');
+        let result = await response.json();
+        setFormDetails(formInitialDetails);
+        if (result.code === 200) {
+            setStatus({success: true, message: "Message Sent successfully"});
+        }else{
+            setStatus({success: false, message: "Something went wrong. Please try again later"});
+        }
 
     }
 
@@ -49,9 +67,9 @@ export const Contact = () => {
                                 <Col md={6}>
                                     <input type="tel" placeholder="Phone No." value={formDetails.phone} onChange={(e) => onFormUpdate('phone',e.target.value)} />
                                 </Col>
-                                <Col>
+                                <Col md={12} className='px-1'>
                                     <textarea  rows="6" placeholder="Message" value={formDetails.message} onChange={(e) => onFormUpdate('message',e.target.value)}></textarea>
-                                    <button type="submit"><span>{buttonText}</span>{buttonText}</button>
+                                    <button type="submit"><span>{buttonText}</span></button>
                                 </Col>
                                 {
                                     status.message&&
