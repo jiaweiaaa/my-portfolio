@@ -5,6 +5,7 @@ import meter1 from "../assets/img/meter1.svg";
 import meter2 from "../assets/img/meter2.svg";
 import meter3 from "../assets/img/meter3.svg";
 import colorSharp from "../assets/img/color-sharp.png";
+import FallingText from "./FallingText";
 
 export const Skills = () => {
     const responsive = {
@@ -36,7 +37,17 @@ export const Skills = () => {
                         <h2>
                             Skills
                         </h2>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore, nostrum.</p>
+                        <FallingText
+                          text={`Javascript, HTML5, CSS3, LESS, element UI, Bootstrap, npm, Font Awesome Icons, React.js, vue.js, eslint, prettier, git, github, agile, Jira, RESTful API, JSON, Node.js, Express.js, MongoDB, MySQL, PostgreSQL, AWS, Figma, Adobe XD, Photoshop, Illustrator, responsive design, performance optimization, debugging, problem-solving,  user experience, design systems, design thinking, Google Workspace, Microsoft Office, Linux, Chrome DevTools, Postman, VS Code, GitHub`}
+                          highlightWords={["React", "Javascript", "vue.js", "Node.js", "Express.js","RESTful API","Figma","Illustrator","Postman"]}
+                          highlightClass="highlighted"
+                          trigger="hover"
+                          backgroundColor="transparent"
+                          wireframes={false}
+                          gravity={0.56}
+                          fontSize="1.2rem"
+                          mouseConstraintStiffness={0.9}
+                        />
                         <Carousel responsive={responsive} infinite={true} autoPlay={true} className="skill-slider">
                             <div className="item">
                                 <img src={meter1} alt="img" />

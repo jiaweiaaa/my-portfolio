@@ -8,6 +8,7 @@ require('dotenv').config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // 解析application/json
 app.use('/', router);
 app.listen(5000, () => console.log('Server Running'));
 
@@ -42,17 +43,33 @@ const validateContactData = (data) => {
   return errors;
 };
 
+const safeValue = (value, defaultValue = '未提供') => {
+  // 检查值是否为undefined、null、NaN或空字符串
+  if (value === undefined || value === null || value === '' || (typeof value === 'number' && isNaN(value))) {
+      return defaultValue;
+  }
+  return value;
+};
+
 router.post("/contact", (req, res) => {
 
-    const name = req.body.firstName + req.body.lastName;
-    const email = req.body.email;
-    const message = req.body.message;
-    const phone = req.body.phone || "No Phone Provided";
+  
+  // 安全地获取表单字段，提供默认值
+  const firstName = safeValue(req.body.firstName, '');
+  const lastName = safeValue(req.body.lastName, '');
+  const email = safeValue(req.body.email);
+  const message = safeValue(req.body.message);
+  const phone = safeValue(req.body.phone);
+  const name = firstName || lastName ? `${firstName} ${lastName}`.trim() : '未提供姓名';
+    
+    // 确保主题是一个固定字符串，不依赖于任何可能为NaN的值
+    const subject = "My portfolio contact form submission";
+    
 
     const mail = {
       from: `"${name}" <${process.env.EMAIL_USER}>`,
       to: process.env.RECIPIENT_EMAIL,
-      subject: "Contact Form Submission - Portfolio",
+      subject: subject,
       html: `<p>Name: ${name}</p>
              <p>Email: ${email}</p>
              <p>Phone: ${phone}</p>

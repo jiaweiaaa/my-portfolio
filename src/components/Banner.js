@@ -49,8 +49,8 @@ export const Banner = () => {
         <Row className="align-items-center">
             <Col xs={12} md={6} xl={7}>
                 <span className="tagline">Welcome to my portfolio</span>
-                <h1>{'Hi I am webdecoded '} <span className="wrap">{text}</span></h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, fugit.
+                <h1>{'Hi I am Vivian Li '} <br></br><span className="wrap">{text}</span></h1>
+                <p>A full-stack developer with a breadth of experience in building responsive and scalable applicationsfrom ideation to deployment, possessing a strong foundation in both front-end and back-endtechnologies. Eager to stay up-to-datewithemerging technologies and contribute to the success of any team.
                 </p>
                 <button onClick={()=> console.log('connect')}>Let's connect <ArrowRightCircle size={25}/></button>
             </Col>
