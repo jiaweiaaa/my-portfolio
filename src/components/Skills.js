@@ -51,19 +51,19 @@ export const Skills = () => {
                         <Carousel responsive={responsive} infinite={true} autoPlay={true} className="skill-slider">
                             <div className="item">
                                 <img src={meter1} alt="img" />
-                                <h5>Web development</h5>
+                                <h5>front-end development</h5>
                             </div>
                             <div className="item">
                                 <img src={meter2} alt="img" />
-                                <h5>Web development</h5>
+                                <h5>Back-end development</h5>
                             </div>
                             <div className="item">
                                 <img src={meter3} alt="img" />
-                                <h5>Web development</h5>
+                                <h5>UI/UX design</h5>
                             </div>
                             <div className="item">
                                 <img src={meter1} alt="img" />
-                                <h5>Web development</h5>
+                                <h5>Grafic design</h5>
                             </div>
                         </Carousel>
                     </div>
