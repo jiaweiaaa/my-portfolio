@@ -2,10 +2,10 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useEffect, useState } from "react";
-import logo from '../assets/img/logo.svg';
-import NavIcon1 from '../assets/img/nav-icon1.svg';
-import NavIcon2 from '../assets/img/nav-icon2.svg';
-import NavIcon3 from '../assets/img/nav-icon3.svg';
+import logo from '../assets/img/logo.png';
+import NavIcon1 from '../assets/img/git-logo.png';
+import NavIcon2 from '../assets/img/in-logo.png';
+import NavIcon3 from '../assets/img/fig-logo.png';
 //import { HashLink } from 'react-router-hash-link';
 //import {
 //  BrowserRouter as Router
@@ -75,20 +75,22 @@ export const NavBar = () => {
           </Nav>
           <span className="navbar-text">
             <div className="social-icon">
-              <a href="">
+              <a href="https://github.com/jiaweiaaa">
                 <img src={NavIcon1} alt="" />
               </a>
-              <a href="">
+              <a href="https://www.linkedin.com/in/jiawei-li-au/">
                 <img src={NavIcon2} alt="" />
               </a>
-              <a href="">
+              <a href="https://www.figma.com/files/team/1303899261123771902/drafts?fuid=1212366999998547057">
                 <img src={NavIcon3} alt="" />
               </a>
           
             </div>
-            <button className="vvd" >
-            <span>Let's Connect</span>
-            </button>
+
+              <button className="vvd" >
+              <span>Let's Connect</span>
+              </button>
+
           </span>
           
         </Navbar.Collapse>

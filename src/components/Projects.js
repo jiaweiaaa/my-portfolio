@@ -1,8 +1,8 @@
 import { Nav, Container, Row, Col, Tab } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
-import projImg1 from "../assets/img/project-img1.png";
-import projImg2 from "../assets/img/project-img2.png";
-import projImg3 from "../assets/img/project-img3.png";
+import projGif1 from "../assets/img/project-web1.gif";
+import projGif2 from "../assets/img/project-web2.gif";
+import projGif3 from "../assets/img/project-web3 .gif";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 
 export const Projects = () => {
@@ -10,32 +10,32 @@ export const Projects = () => {
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: projImg1,
+      imgUrl: projGif1,
     },
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: projImg2,
+      imgUrl: projGif2,
     },
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: projImg3,
+      imgUrl: projGif3,
     },
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: projImg1,
+      imgUrl: projGif1,
     },
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: projImg2,
+      imgUrl: projGif2,
     },
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: projImg3,
+      imgUrl: projGif3,
     },
   ];
 
@@ -46,20 +46,19 @@ export const Projects = () => {
           <Col>
             <h2>Projects</h2>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore,
-              nostrum.
+              Below are the projects I completed previously.
             </p>
             <Tab.Container id="projects-tab" defaultActiveKey="first">
                 <Nav variant="pills"  className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                 <Nav.Item>
-                    <Nav.Link eventKey="first">Tab One</Nav.Link>
+                    <Nav.Link eventKey="first">Websites</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="second">Tab two</Nav.Link>
+                    <Nav.Link eventKey="second">Graphic</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="third" >
-                    Tab Three
+                    Apps
                     </Nav.Link>
                 </Nav.Item>
                 </Nav>
