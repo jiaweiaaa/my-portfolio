@@ -4,6 +4,12 @@ const cors = require('cors');
 const nodeMailer = require('nodemailer');
 require('dotenv').config(); 
 
+const path = require('path');
+const __dirname = path.dirname("");
+const buildPath = path.join(__dirname, 'build');
+
+app.use(express.static(buildPath));
+
 //server used to send emails
 const app = express();
 app.use(cors());
@@ -11,6 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // 解析application/json
 app.use('/', router);
 app.listen(5000, () => console.log('Server Running'));
+
+
 
 
 const contactEmail = nodeMailer.createTransport({
@@ -96,6 +104,18 @@ router.get("/test", (req, res) => {
       status: "OK",
       message: "服务器正常运行"
   });
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(
+    path.join(__dirname, 'build', 'index.html'),
+    function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    }
+  );
+
 });
 
 // 错误处理中间件
