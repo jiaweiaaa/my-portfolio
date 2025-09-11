@@ -28,7 +28,7 @@ module.exports = {
       host: '3.26.44.64',
       ref: 'origin/main',
       repo: 'your-git-repo-url',
-      path: '/home/ec2-user/react-portfolio',
+      path: '/home/ec2-user/apps/react-portfolio',
       'pre-deploy-local': '',
       'post-deploy': 'npm install --only=production && npm run build && pm2 reload ecosystem.config.js --env production',
       'pre-setup': ''
