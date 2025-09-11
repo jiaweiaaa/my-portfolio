@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 配置变量 - 请修改为你的实际值
-EC2_KEY="path/to/your-key.pem"  # 替换为你的密钥路径
+EC2_KEY="F:/projects/key/key.pem"  # 替换为你的密钥路径
 EC2_HOST="ec2-user@3.26.44.64"
 PROJECT_DIR="react-portfolio"
 
