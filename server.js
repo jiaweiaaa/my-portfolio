@@ -5,13 +5,15 @@ const nodeMailer = require('nodemailer');
 require('dotenv').config(); 
 
 const path = require('path');
-const __dirname = path.dirname("");
+//const __dirname = path.dirname("");
 const buildPath = path.join(__dirname, 'build');
 
-app.use(express.static(buildPath));
+
 
 //server used to send emails
+
 const app = express();
+app.use(express.static(buildPath));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // 解析application/json

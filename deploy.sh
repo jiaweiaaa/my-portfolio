@@ -34,16 +34,23 @@ if [ $? -ne 0 ]; then
 fi
 
 echo -e "${YELLOW}📦 同步项目文件到 EC2...${NC}"
-rsync -avz --delete --progress \
-    --exclude 'node_modules' \
-    --exclude '.git' \
-    --exclude 'src' \
-    --exclude 'public' \
-    --exclude '.env.local' \
-    --exclude '.env.development' \
-    --exclude 'deploy.sh' \
-    -e "ssh -i $EC2_KEY -o StrictHostKeyChecking=no" \
-    ./ $EC2_HOST:~/$PROJECT_DIR/
+
+# 创建临时目录排除不需要的文件
+TEMP_DIR=$(mktemp -d)
+echo "创建临时部署目录: $TEMP_DIR"
+
+# 复制需要的文件到临时目录
+cp -r build/ "$TEMP_DIR/" 2>/dev/null || echo "build目录不存在，稍后将在服务器构建"
+cp server.js "$TEMP_DIR/"
+cp package.json "$TEMP_DIR/"
+cp ecosystem.config.js "$TEMP_DIR/"
+cp .env.production "$TEMP_DIR/" 2>/dev/null || echo ".env.production不存在"
+
+# 使用scp上传文件
+scp -i "$EC2_KEY" -o StrictHostKeyChecking=no -r "$TEMP_DIR"/* $EC2_HOST:~/$PROJECT_DIR/
+
+# 清理临时目录
+rm -rf "$TEMP_DIR"
 
 if [ $? -ne 0 ]; then
     echo -e "${RED}❌ 文件同步失败!${NC}"
@@ -71,6 +78,11 @@ ssh -i $EC2_KEY -o StrictHostKeyChecking=no $EC2_HOST << EOF
     pm2 delete react-portfolio 2>/dev/null || true
     pm2 start ecosystem.config.js --env production
     pm2 save
+    
+    echo "📁 复制构建文件到 nginx 目录..."
+    sudo cp -r ~/react-portfolio/build/* /var/www/html/
+    sudo chown -R nginx:nginx /var/www/html/
+    sudo chmod -R 755 /var/www/html/
     
     echo "📊 检查应用状态..."
     sleep 3
