@@ -3,6 +3,8 @@ import { ProjectCard } from "./ProjectCard";
 import projGif1 from "../assets/img/project-web1.gif";
 import projGif2 from "../assets/img/project-web2.gif";
 import projGif3 from "../assets/img/project-web3 .gif";
+import projGif4 from "../assets/img/project-web4.gif";
+import projGif5 from "../assets/img/project-web5.gif";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 
 export const Projects = () => {
@@ -13,30 +15,26 @@ export const Projects = () => {
       imgUrl: projGif1,
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projGif2,
-    },
-    {
-      title: "Business Startup",
+      title: "school management system",
       description: "Design & Development",
       imgUrl: projGif3,
     },
     {
-      title: "Business Startup",
+      title: "Retail Business",
       description: "Design & Development",
-      imgUrl: projGif1,
+      imgUrl: projGif5,
+    },
+    {
+      title: "Retail Business",
+      description: "Design & Development",
+      imgUrl: projGif4,
     },
     {
       title: "Business Startup",
       description: "Design & Development",
       imgUrl: projGif2,
     },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projGif3,
-    },
+    
   ];
 
   return (
