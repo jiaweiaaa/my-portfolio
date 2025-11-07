@@ -5,36 +5,55 @@ import projGif2 from "../assets/img/project-web2.gif";
 import projGif3 from "../assets/img/project-web3 .gif";
 import projGif4 from "../assets/img/project-web4.gif";
 import projGif5 from "../assets/img/project-web5.gif";
+import projGif6 from "../assets/img/project-web6.gif";
+import proapp1 from "../assets/img/project-app1.gif";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 
 export const Projects = () => {
   const projects = [
     {
+      id: 1,
       title: "Business Startup",
       description: "Design & Development",
       imgUrl: projGif1,
     },
     {
+      id: 2,
       title: "school management system",
       description: "Design & Development",
       imgUrl: projGif3,
     },
     {
+      id: 3,
       title: "Retail Business",
       description: "Design & Development",
       imgUrl: projGif5,
     },
     {
+      id: 4,
       title: "Retail Business",
       description: "Design & Development",
       imgUrl: projGif4,
     },
     {
+      id: 5,
+      title: "Retail Business",
+      description: "Design & Development",
+      imgUrl: projGif6,
+    },
+    {id: 6,
       title: "Business Startup",
       description: "Design & Development",
       imgUrl: projGif2,
     },
     
+  ];
+ const apps = [
+    {
+      title: " Logistics Business",
+      description: "Design",
+      imgUrl: proapp1,
+    },
   ];
 
   return (
@@ -68,6 +87,7 @@ export const Projects = () => {
                                     return (
                                         <ProjectCard
                                             key={index}
+                                            id={projects.id}
                                             title={projects.title}
                                             description={projects.description}
                                             imgUrl={projects.imgUrl} />
