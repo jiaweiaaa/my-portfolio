@@ -52,7 +52,9 @@ export const Banner = () => {
                 <h1>{'Hi I am Vivian Li '} <br></br><span className="wrap">{text}</span></h1>
                 <p>A full-stack developer with a breadth of experience in building responsive and scalable applicationsfrom ideation to deployment, possessing a strong foundation in both front-end and back-endtechnologies. Eager to stay up-to-datewithemerging technologies and contribute to the success of any team.
                 </p>
-                <button onClick={()=> console.log('connect')}>Let's connect <ArrowRightCircle size={25}/></button>
+                <button onClick={()=> document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" })}>Let's connect <ArrowRightCircle size={25}/></button>
             </Col>
             <Col xs={12} md={6} xl={5}>
                 <img src={HeaderImg} alt="Header img" />

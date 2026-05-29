@@ -62,9 +62,22 @@ const safeValue = (value, defaultValue = '未提供') => {
 };
 
 router.post("/contact", (req, res) => {
-
   
-  // 安全地获取表单字段，提供默认值
+  // 1. 调用你写好的验证函数，检查前端传来的数据
+  const errors = validateContactData(req.body);
+  
+  // 2. 如果存在错误，直接返回 400 状态码，不执行发邮件逻辑
+  if (errors.length > 0) {
+      // 在终端打印一下被拦截的请求，方便调试
+      console.log('表单验证失败被拦截:', errors); 
+      return res.status(400).json({ 
+          code: 400, 
+          status: "Error", 
+          message: errors.join('，') // 把错误数组拼接成字符串返回
+      });
+  }
+
+  // 3. 验证通过后，再安全地获取表单字段（保留你原来的逻辑）
   const firstName = safeValue(req.body.firstName, '');
   const lastName = safeValue(req.body.lastName, '');
   const email = safeValue(req.body.email);
@@ -72,32 +85,31 @@ router.post("/contact", (req, res) => {
   const phone = safeValue(req.body.phone);
   const name = firstName || lastName ? `${firstName} ${lastName}`.trim() : '未提供姓名';
     
-    // 确保主题是一个固定字符串，不依赖于任何可能为NaN的值
-    const subject = "My portfolio contact form submission";
+  const subject = "My portfolio contact form submission";
     
+  const mail = {
+    from: `"${name}" <${process.env.EMAIL_USER}>`,
+    to: process.env.RECIPIENT_EMAIL,
+    subject: subject,
+    html: `<p>Name: ${name}</p>
+           <p>Email: ${email}</p>
+           <p>Phone: ${phone}</p>
+           <p>Message: ${message}</p>`,
+  };
 
-    const mail = {
-      from: `"${name}" <${process.env.EMAIL_USER}>`,
-      to: process.env.RECIPIENT_EMAIL,
-      subject: subject,
-      html: `<p>Name: ${name}</p>
-             <p>Email: ${email}</p>
-             <p>Phone: ${phone}</p>
-             <p>Message: ${message}</p>`,
-    };
-    contactEmail.sendMail(mail, (error) => {
-      if (error) {
-        console.error('发送邮件失败:', error);
-            return res.status(500).json({ 
-                code: 500, 
-                status: "Error", 
-                message: "发送邮件时出错" 
-            });
-      } else {
-        res.json({ code: 200, status: "Message Sent" });
-      }
-    });
+  contactEmail.sendMail(mail, (error) => {
+    if (error) {
+      console.error('发送邮件失败:', error);
+          return res.status(500).json({ 
+              code: 500, 
+              status: "Error", 
+              message: "发送邮件时出错" 
+          });
+    } else {
+      res.json({ code: 200, status: "Message Sent" });
+    }
   });
+});
 
 
   // 测试路由

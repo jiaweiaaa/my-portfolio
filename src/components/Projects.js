@@ -2,7 +2,7 @@ import { Nav, Container, Row, Col, Tab } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
 import projGif1 from "../assets/img/project-web1.gif";
 import projGif2 from "../assets/img/project-web2.gif";
-import projGif3 from "../assets/img/project-web3 .gif";
+import projGif3 from "../assets/img/project-web3.gif";
 import projGif4 from "../assets/img/project-web4.gif";
 import projGif5 from "../assets/img/project-web5.gif";
 import projGif6 from "../assets/img/project-web6.gif";
@@ -21,13 +21,13 @@ export const Projects = () => {
       id: 2,
       title: "school management system",
       description: "Design & Development",
-      imgUrl: projGif3,
+      imgUrl: projGif2,
     },
     {
       id: 3,
       title: "Retail Business",
       description: "Design & Development",
-      imgUrl: projGif5,
+      imgUrl: projGif3,
     },
     {
       id: 4,
@@ -39,17 +39,18 @@ export const Projects = () => {
       id: 5,
       title: "Retail Business",
       description: "Design & Development",
-      imgUrl: projGif6,
+      imgUrl: projGif5,
     },
     {id: 6,
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: projGif2,
+      imgUrl: projGif6,
     },
     
   ];
  const apps = [
     {
+      id: 7,
       title: " Logistics Business",
       description: "Design",
       imgUrl: proapp1,
@@ -97,7 +98,22 @@ export const Projects = () => {
                         </Row>
                     </Tab.Pane>
                     <Tab.Pane eventKey="second">Lorem ipsum</Tab.Pane>
-                    <Tab.Pane eventKey="third">Lorem ipsum</Tab.Pane>
+                    <Tab.Pane eventKey="third">
+                      <Row>
+                            {
+                                apps.map((projects, index) =>{
+                                    return (
+                                        <ProjectCard
+                                            key={index}
+                                            id={projects.id}
+                                            title={projects.title}
+                                            description={projects.description}
+                                            imgUrl={projects.imgUrl} />
+                                    )
+                                }) 
+                            }
+                        </Row>
+                    </Tab.Pane>
                 </Tab.Content>
                 
             </Tab.Container>

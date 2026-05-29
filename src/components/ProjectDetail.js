@@ -3,8 +3,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import projGif1 from "../assets/img/project-web1.gif";
 import projGif2 from "../assets/img/project-web2.gif";
-import projGif3 from "../assets/img/project-web3 .gif";
-
+import projGif3 from "../assets/img/project-web3.gif";
+import projGif4 from "../assets/img/project-web4.gif";
+import projGif5 from "../assets/img/project-web5.gif";
+import projGif6 from "../assets/img/project-web6.gif";
+import proapp1 from "../assets/img/project-app1.gif";
 export const ProjectDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -42,7 +45,7 @@ export const ProjectDetail = () => {
             title: "Business Startup",
             description: "Design & Development",
             fullDescription: "Another innovative business solution featuring cutting-edge technology and user-centric design.",
-            imgUrl: projGif1,
+            imgUrl: projGif4,
             technologies: ["React", "Bootstrap", "REST API"],
             demoLink: "#",
             githubLink: "#"
@@ -51,7 +54,7 @@ export const ProjectDetail = () => {
             title: "Business Startup",
             description: "Design & Development",
             fullDescription: "Modern web application built with the latest technologies and best practices.",
-            imgUrl: projGif2,
+            imgUrl: projGif5,
             technologies: ["React", "TypeScript", "Material UI"],
             demoLink: "#",
             githubLink: "#"
@@ -60,8 +63,17 @@ export const ProjectDetail = () => {
             title: "Business Startup",
             description: "Design & Development",
             fullDescription: "Comprehensive digital solution designed to meet modern business needs.",
-            imgUrl: projGif3,
+            imgUrl: projGif6,
             technologies: ["React", "Redux", "Styled Components"],
+            demoLink: "#",
+            githubLink: "#"
+        },
+        7: {
+            title: "Logistics Business",
+            description: "Design",
+            fullDescription: "A modern logistics management solution designed to streamline operations and improve efficiency.",
+            imgUrl: proapp1,
+            technologies: ["React", "Node.js", "Express"],
             demoLink: "#",
             githubLink: "#"
         }

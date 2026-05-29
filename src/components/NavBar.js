@@ -2,15 +2,14 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useEffect, useState } from "react";
-import logo from '../assets/img/logo.png';
-import NavIcon1 from '../assets/img/git-logo.png';
-import NavIcon2 from '../assets/img/in-logo.png';
-import NavIcon3 from '../assets/img/fig-logo.png';
+import logo from "../assets/img/logo.png";
+import NavIcon1 from "../assets/img/git-logo.png";
+import NavIcon2 from "../assets/img/in-logo.png";
+import NavIcon3 from "../assets/img/fig-logo.png";
 //import { HashLink } from 'react-router-hash-link';
 //import {
 //  BrowserRouter as Router
 //} from "react-router-dom";
-
 
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");
@@ -30,9 +29,9 @@ export const NavBar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const onUpdateActiveLink =(value) => {
+  const onUpdateActiveLink = (value) => {
     setActiveLink(value);
-  }
+  };
 
   return (
     <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
@@ -43,14 +42,14 @@ export const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav">
           <span className="navbar-toggler-icon"></span>
         </Navbar.Toggle>
-        <Navbar.Collapse id="basic-navbar-nav"> 
+        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link
               href="#home"
               className={
                 activeLink === "home" ? "active navbar-link" : "navbar-link"
               }
-              onClick={() => onUpdateActiveLink('home')}
+              onClick={() => onUpdateActiveLink("home")}
             >
               Home
             </Nav.Link>
@@ -59,7 +58,7 @@ export const NavBar = () => {
               className={
                 activeLink === "skills" ? "active navbar-link" : "navbar-link"
               }
-              onClick={() => onUpdateActiveLink('skills')}
+              onClick={() => onUpdateActiveLink("skills")}
             >
               Skills
             </Nav.Link>
@@ -68,7 +67,7 @@ export const NavBar = () => {
               className={
                 activeLink === "projects" ? "active navbar-link" : "navbar-link"
               }
-              onClick={() => onUpdateActiveLink('projects')}
+              onClick={() => onUpdateActiveLink("projects")}
             >
               Projects
             </Nav.Link>
@@ -81,18 +80,24 @@ export const NavBar = () => {
               <a href="https://www.linkedin.com/in/jiawei-li-au/">
                 <img src={NavIcon2} alt="" />
               </a>
-              <a href="https://www.figma.com/files/team/1303899261123771902/drafts?fuid=1212366999998547057">
+              <a href="https://www.figma.com/@jiaweili1">
                 <img src={NavIcon3} alt="" />
               </a>
-          
             </div>
 
-              <button className="vvd" >
+            <button
+              className="vvd"
+              onClick={() => {
+                onUpdateActiveLink("contact"); // 更新状态为 contact
+                // 寻找 ID 为 'contact' 的元素，并平滑滚动过去
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
               <span>Let's Connect</span>
-              </button>
-
+            </button>
           </span>
-          
         </Navbar.Collapse>
       </Container>
     </Navbar>

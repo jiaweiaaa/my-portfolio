@@ -25,8 +25,34 @@ export const Contact = () => {
 
     const handleSubmit =  async (e) => {
         e.preventDefault();
+
+        const apiUrl = process.env.REACT_APP_API_URL || "";
+
+        // 1. 提取当前表单数据
+        const { firstName, lastName, email, message } = formDetails;
+
+        // 2. 前端验证：检查姓名是否为空
+        if (!firstName.trim() || !lastName.trim()) {
+            alert("Name is required. Please enter your first and last name.");
+            return; // 关键：阻断后续代码，不发请求
+        }
+
+        // 3. 前端验证：检查邮箱格式 (正则)
+        const emailRegex = /^\S+@\S+\.\S+$/;
+        if (!email || !emailRegex.test(email)) {
+            alert("Invalid email format. Please enter a valid email address.");
+            return;
+        }
+
+        // 4. 前端验证：检查留言是否为空
+        if (!message.trim()) {
+            alert("Message is required. Please enter your message.");
+            return;
+        }
+
+        // 验证通过，继续发送逻辑
         setButtonText('Sending...');
-        let response =await fetch("/contact", {
+        let response = await fetch( `${apiUrl}/contact`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,11 +64,10 @@ export const Contact = () => {
         setFormDetails(formInitialDetails);
         if (result.code === 200) {
             setStatus({success: true, message: "Message Sent successfully"});
-        }else{
+        } else {
             setStatus({success: false, message: "Something went wrong. Please try again later"});
         }
-
-    }
+    } 
 
     return(
         <section className="contact" id="contact">
